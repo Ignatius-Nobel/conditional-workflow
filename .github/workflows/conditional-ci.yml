@@ -14,7 +14,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
     needs: build
-    if: startsWith(github.ref,'refs/head/feature/')
+    if: startsWith(github.ref,'refs/heads/feature/')
     steps:
       - name: test app
         run: echo "Testing app..."
