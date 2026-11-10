@@ -1,0 +1,22 @@
+name: Conditional CI Pipeline
+
+on:
+  push:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: build app
+        run: echo "Building app..."
+      - name: build cleanup
+        run: echo "build finished"
+  test:
+    runs-on: ubuntu-latest
+    needs: build
+    if: startsWith(github.ref,'refs/head/feature/')
+    steps:
+      - name: test app
+        run: echo "Testing app..."
+      - name: test cleanup
+        run: echo "test finished"
